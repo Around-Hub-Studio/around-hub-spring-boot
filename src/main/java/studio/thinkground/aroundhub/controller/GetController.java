@@ -31,13 +31,13 @@ public class GetController {
     return variable;
   }
 
-  // http://localhost:8080/api/v1/get-api/variable1/{String 값}
+  // http://localhost:8080/api/v1/get-api/variable2/{String 값}
   @GetMapping(value = "/variable2/{variable}")
   public String getVariable2(@PathVariable("variable") String var) {
     return var;
   }
 
-  // http://localhost:8080/api/v1/get-api/request2?name=flature&email=thinkground.flature@gmail.com&organization=thinkground
+  // http://localhost:8080/api/v1/get-api/request1?name=flature&email=thinkground.flature@gmail.com&organization=thinkground
   @GetMapping(value = "/request1")
   public String getRequestParam1(
       @RequestParam String name,
@@ -55,10 +55,14 @@ public class GetController {
       sb.append(map.getKey() + " : " + map.getValue() + "\n");
     });
 
+    /*
+    param.forEach((key, value) -> sb.append(key).append(" : ").append(value).append("\n"));
+     */
+
     return sb.toString();
   }
 
-  // http://localhost:8080/api/v1/get-api/request2?name=flature&email=thinkground.flature@gmail.com&organization=thinkground
+  // http://localhost:8080/api/v1/get-api/request3?name=flature&email=thinkground.flature@gmail.com&organization=thinkground
   @GetMapping(value="/request3")
   public String getRequestParam3(MemberDTO memberDTO){
     //return memberDTO.getName() + " " + memberDTO.getEmail() + " " + memberDTO.getOrganization();
