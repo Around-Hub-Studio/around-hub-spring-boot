@@ -21,10 +21,10 @@ public class PutController {
 
   // http://localhost:8080/api/v1/put-api/member
   @PutMapping(value = "/member")
-  public String postMember(@RequestBody Map<String, Object> postData) {
+  public String postMember(@RequestBody Map<String, Object> putData) {
     StringBuilder sb = new StringBuilder();
 
-    postData.entrySet().forEach(map -> {
+    putData.entrySet().forEach(map -> {
       sb.append(map.getKey() + " : " + map.getValue() + "\n");
     });
 
