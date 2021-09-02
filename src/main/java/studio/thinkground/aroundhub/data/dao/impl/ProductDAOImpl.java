@@ -27,4 +27,16 @@ public class ProductDAOImpl implements ProductDAO {
     ProductEntity productEntity = productRepository.getById(productId);
     return productEntity;
   }
+
+  /**
+   * Repository에서 기본적으로 제공하는 대표적인 메소드
+   */
+  private void testRepositoryMethod(){
+/*    productRepository.save();
+    productRepository.getById();
+    productRepository.delete();
+    productRepository.deleteAll();
+    productRepository.findAll();
+    productRepository.saveAll();*/
+  }
 }
