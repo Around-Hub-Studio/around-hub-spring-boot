@@ -23,7 +23,7 @@ import studio.thinkground.aroundhub.service.ProductService;
 public class ProductController {
 
   private final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
-  private ProductService productService;
+  private final ProductService productService;
 
   @Autowired
   public ProductController(ProductService productService) {

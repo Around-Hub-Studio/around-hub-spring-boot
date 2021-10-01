@@ -30,6 +30,7 @@ public class HelloController {
     LOGGER.info("Info Log");
     LOGGER.warn("Warn Log");
     LOGGER.error("Error Log");
+
   }
 
   @PostMapping("/exception")
