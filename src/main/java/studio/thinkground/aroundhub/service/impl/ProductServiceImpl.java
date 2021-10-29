@@ -1,5 +1,7 @@
 package studio.thinkground.aroundhub.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studio.thinkground.aroundhub.data.dto.ProductDto;
@@ -10,30 +12,44 @@ import studio.thinkground.aroundhub.service.ProductService;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-  ProductDataHandler productDataHandler;
+    private final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 
-  @Autowired
-  public ProductServiceImpl(ProductDataHandler productDataHandler){
-    this.productDataHandler = productDataHandler;
-  }
+    ProductDataHandler productDataHandler;
 
-  @Override
-  public ProductDto saveProduct(String productId, String productName, int productPrice, int productStock) {
-    ProductEntity productEntity = productDataHandler.saveProductEntity(productId, productName, productPrice, productStock);
+    @Autowired
+    public ProductServiceImpl(ProductDataHandler productDataHandler) {
+        this.productDataHandler = productDataHandler;
+    }
 
-    ProductDto productDto = new ProductDto(productEntity.getProductId(),
-        productEntity.getProductName(), productEntity.getProductPrice(), productEntity.getProductStock());
+    @Override
+    public ProductDto saveProduct(String productId, String productName, int productPrice,
+        int productStock) {
 
-    return productDto;
-  }
+        LOGGER.info("[saveProduct] productDataHandler 로 상품 정보 저장 요청");
+        ProductEntity productEntity = productDataHandler.saveProductEntity(productId, productName,
+            productPrice, productStock);
 
-  @Override
-  public ProductDto getProduct(String productId) {
-    ProductEntity productEntity = productDataHandler.getProductEntity(productId);
+        LOGGER.info("[saveProduct] Entity 객체를 DTO 객체로 변환 작업. productId : {}",
+            productEntity.getProductId());
+        ProductDto productDto = new ProductDto(productEntity.getProductId(),
+            productEntity.getProductName(), productEntity.getProductPrice(),
+            productEntity.getProductStock());
 
-    ProductDto productDto = new ProductDto(productEntity.getProductId(),
-        productEntity.getProductName(), productEntity.getProductPrice(), productEntity.getProductStock());
+        return productDto;
+    }
 
-    return productDto;
-  }
+    @Override
+    public ProductDto getProduct(String productId) {
+
+        LOGGER.info("[getProduct] productDataHandler 로 상품 정보 조회 요청");
+        ProductEntity productEntity = productDataHandler.getProductEntity(productId);
+
+        LOGGER.info("[getProduct] Entity 객체를 DTO 객체로 변환 작업. productId : {}",
+            productEntity.getProductId());
+        ProductDto productDto = new ProductDto(productEntity.getProductId(),
+            productEntity.getProductName(), productEntity.getProductPrice(),
+            productEntity.getProductStock());
+
+        return productDto;
+    }
 }

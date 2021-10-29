@@ -4,8 +4,8 @@ import studio.thinkground.aroundhub.data.entity.ProductEntity;
 
 public interface ProductDAO {
 
-  ProductEntity saveProduct(ProductEntity productEntity);
+    ProductEntity saveProduct(ProductEntity productEntity);
 
-  ProductEntity getProduct(String productId);
+    ProductEntity getProduct(String productId);
 
 }
