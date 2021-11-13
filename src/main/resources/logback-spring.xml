@@ -15,7 +15,7 @@
     </encoder>
   </appender>
 
-  <!--
+
   <appender name="DEBUG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>DEBUG</level>
@@ -46,6 +46,7 @@
     </encoder>
   </appender>
 
+  <!--
   <appender name="WARN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>WARN</level>
@@ -80,9 +81,9 @@
   <!-- Root Logger -->
   <root level="INFO">
     <appender-ref ref="console" />
-<!--
     <appender-ref ref="DEBUG_LOG" />
     <appender-ref ref="INFO_LOG" />
+    <!--
     <appender-ref ref="WARN_LOG" />
     <appender-ref ref="ERROR_LOG" />
     -->

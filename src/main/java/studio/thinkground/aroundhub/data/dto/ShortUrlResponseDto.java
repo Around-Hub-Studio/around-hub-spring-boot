@@ -10,12 +10,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class SignUpResultDto {
+@Builder
+public class ShortUrlResponseDto {
 
-    private boolean success;
+    private String orgUrl;
 
-    private int code;
-
-    private String msg;
+    private String shortUrl;
 
 }
