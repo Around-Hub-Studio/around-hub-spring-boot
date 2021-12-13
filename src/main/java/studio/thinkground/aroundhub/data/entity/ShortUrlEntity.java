@@ -34,5 +34,4 @@ public class ShortUrlEntity extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String orgUrl;
 
-
 }

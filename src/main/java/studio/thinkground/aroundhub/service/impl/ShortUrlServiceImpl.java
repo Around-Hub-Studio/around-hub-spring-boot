@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import studio.thinkground.aroundhub.data.dao.ShortUrlDAO;
 import studio.thinkground.aroundhub.data.dto.NaverUriDto;
 import studio.thinkground.aroundhub.data.dto.ShortUrlResponseDto;
+import studio.thinkground.aroundhub.data.entity.ShortUrlEntity;
 import studio.thinkground.aroundhub.service.ShortUrlService;
 
 @Service
@@ -33,28 +34,58 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     @Override
     public ShortUrlResponseDto getShortUrl(String clientId, String clientSecret,
         String originalUrl) {
-        ResponseEntity<NaverUriDto> responseEntity = requestShortUrl(clientId, clientSecret,
-            originalUrl);
 
-        String orgUrl = responseEntity.getBody().getResult().getOrgUrl();
-        String shortUrl = responseEntity.getBody().getResult().getUrl();
+        LOGGER.info("[getShortUrl] request data : {}", originalUrl);
+        ShortUrlEntity getShortUrlEntity = shortUrlDAO.getShortUrl(originalUrl);
 
-        LOGGER.info("orgUrl : {}", orgUrl);
+        String orgUrl;
+        String shortUrl;
+
+        if (getShortUrlEntity == null) {
+            LOGGER.info("[getShortUrl] No Entity in Database.");
+            ResponseEntity<NaverUriDto> responseEntity = requestShortUrl(clientId, clientSecret,
+                originalUrl);
+
+            orgUrl = responseEntity.getBody().getResult().getOrgUrl();
+            shortUrl = responseEntity.getBody().getResult().getUrl();
+
+        } else {
+            orgUrl = getShortUrlEntity.getOrgUrl();
+            shortUrl = getShortUrlEntity.getUrl();
+        }
 
         ShortUrlResponseDto shortUrlResponseDto = new ShortUrlResponseDto(orgUrl, shortUrl);
+
+        LOGGER.info("[getShortUrl] Response DTO : {}", shortUrlResponseDto.toString());
         return shortUrlResponseDto;
     }
 
     @Override
     public ShortUrlResponseDto generateShortUrl(String clientId, String clientSecret,
         String originalUrl) {
+
+        LOGGER.info("[generateShortUrl] request data : {}", originalUrl);
+
+        if(originalUrl.contains("me2.do")){
+            throw new RuntimeException();
+        }
+
         ResponseEntity<NaverUriDto> responseEntity = requestShortUrl(clientId, clientSecret,
             originalUrl);
 
         String orgUrl = responseEntity.getBody().getResult().getOrgUrl();
         String shortUrl = responseEntity.getBody().getResult().getUrl();
+        String hash = responseEntity.getBody().getResult().getHash();
+
+        ShortUrlEntity shortUrlEntity = new ShortUrlEntity();
+        shortUrlEntity.setOrgUrl(orgUrl);
+        shortUrlEntity.setUrl(shortUrl);
+        shortUrlEntity.setHash(hash);
+
+        shortUrlDAO.saveShortUrl(shortUrlEntity);
 
         ShortUrlResponseDto shortUrlResponseDto = new ShortUrlResponseDto(orgUrl, shortUrl);
+        LOGGER.info("[generateShortUrl] Response DTO : {}", shortUrlResponseDto.toString());
         return shortUrlResponseDto;
     }
 
@@ -65,17 +96,30 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     }
 
     @Override
-    public ShortUrlResponseDto deleteByShortUrl(String shortUrl) {
-        return null;
+    public void deleteShortUrl(String url) {
+        if(url.contains("me2.do")){
+            LOGGER.info("[deleteShortUrl] Request Url is 'ShortUrl'.");
+            deleteByShortUrl(url);
+        }else{
+            LOGGER.info("[deleteShortUrl] Request Url is 'OriginalUrl'.");
+            deleteByOriginalUrl(url);
+        }
     }
 
-    @Override
-    public ShortUrlResponseDto deleteByOriginalUrl(String originalUrl) {
-        return null;
+    private void deleteByShortUrl(String url){
+        LOGGER.info("[deleteByShortUrl] delete record");
+        shortUrlDAO.deleteByShortUrl(url);
+    }
+
+    private void deleteByOriginalUrl(String url){
+        LOGGER.info("[deleteByOriginalUrl] delete record");
+        shortUrlDAO.deleteByOriginalUrl(url);
     }
 
     private ResponseEntity<NaverUriDto> requestShortUrl(String clientId, String clientSecret,
         String originalUrl) {
+        LOGGER.info("[requestShortUrl] client ID : ***, client Secret : ***, original URL : {}", originalUrl);
+
         URI uri = UriComponentsBuilder
             .fromUriString("https://openapi.naver.com")
             .path("/v1/util/shorturl")
@@ -84,6 +128,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
             .build()
             .toUri();
 
+        LOGGER.info("[requestShortUrl] set HTTP Request Header");
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(new MediaType[]{MediaType.APPLICATION_JSON}));
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -93,8 +138,12 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         HttpEntity<String> entity = new HttpEntity<>("", headers);
 
         RestTemplate restTemplate = new RestTemplate();
+
+        LOGGER.info("[requestShortUrl] request by restTemplate");
         ResponseEntity<NaverUriDto> responseEntity = restTemplate.exchange(uri, HttpMethod.GET,
             entity, NaverUriDto.class);
+
+        LOGGER.info("[requestShortUrl] request has been successfully complete.");
 
         return responseEntity;
     }
