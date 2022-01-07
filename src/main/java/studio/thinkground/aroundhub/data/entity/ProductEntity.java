@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import studio.thinkground.aroundhub.data.dto.ProductDto;
 
 @Entity
@@ -17,6 +18,7 @@ import studio.thinkground.aroundhub.data.dto.ProductDto;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @Table(name = "product")
 public class ProductEntity {
 

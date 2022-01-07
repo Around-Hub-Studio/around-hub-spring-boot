@@ -71,7 +71,7 @@ public class ProductControllerTest {
     String content = gson.toJson(productDto);
 
     // 아래 코드로 json 형태 변경 작업을 대체할 수 있음
-    String json = new ObjectMapper().writeValueAsString(productDto);
+    // String json = new ObjectMapper().writeValueAsString(productDto);
 
     mockMvc.perform(
             post("/api/v1/product-api/product")
