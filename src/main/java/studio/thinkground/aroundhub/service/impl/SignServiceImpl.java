@@ -36,7 +36,6 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public SignUpResultDto getSignUpResult(String id, String password, String name) {
-
         LOGGER.info("[getSignUpResult] signDataHandler 로 회원 가입 정보 전달");
         UserEntity userEntity = signDataHandler.saveUserEntity(id, passwordEncoder.encode(password),
             name,
@@ -58,10 +57,8 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public SignInResultDto getSignInResult(String id, String password) throws AroundHubException {
-
         LOGGER.info("[getSignInResult] signDataHandler 로 회원 정보 요청");
         UserEntity userEntity = signDataHandler.getByUid(id);
-
         LOGGER.info("[getSignInResult] Id : {}", id);
 
         LOGGER.info("[getSignInResult] 패스워드 비교 수행");

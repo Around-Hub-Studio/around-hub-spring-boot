@@ -32,7 +32,6 @@ public class SignController {
         @ApiParam(value = "ID", required = true) @RequestParam String id,
         @ApiParam(value = "Password", required = true) @RequestParam String password)
         throws AroundHubException {
-
         LOGGER.info("[signIn] 로그인을 시도하고 있습니다. id : {}, pw : ****", id);
 
         SignInResultDto signInResultDto = signService.getSignInResult(id, password);
