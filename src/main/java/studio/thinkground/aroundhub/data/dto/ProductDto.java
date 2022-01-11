@@ -36,10 +36,10 @@ public class ProductDto {
 
   public Product toEntity(){
     return Product.builder()
-        .productId(productId)
-        .productName(productName)
-        .productPrice(productPrice)
-        .productStock(productStock)
+        .id(productId)
+        .name(productName)
+        .price(productPrice)
+        .stock(productStock)
         .build();
   }
 
