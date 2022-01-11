@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studio.thinkground.aroundhub.data.dao.ProductDAO;
-import studio.thinkground.aroundhub.data.entity.ProductEntity;
+import studio.thinkground.aroundhub.data.entity.Product;
 import studio.thinkground.aroundhub.data.repository.ProductRepository;
 
 @Service
@@ -21,19 +21,19 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public ProductEntity saveProduct(ProductEntity productEntity) {
-        LOGGER.info("[saveProduct] product 정보 저장. productId : {}", productEntity.getProductId());
-        ProductEntity productEntity1 = productRepository.save(productEntity);
-        LOGGER.info("[saveProduct] product 정보 저장완료. productId : {}", productEntity1.getProductId());
-        return productEntity1;
+    public Product saveProduct(Product product) {
+        LOGGER.info("[saveProduct] product 정보 저장. productId : {}", product.getId());
+        Product product1 = productRepository.save(product);
+        LOGGER.info("[saveProduct] product 정보 저장완료. productId : {}", product1.getId());
+        return product1;
     }
 
     @Override
-    public ProductEntity getProduct(String productId) {
+    public Product getProduct(String productId) {
         LOGGER.info("[getProduct] product 정보 요청. productId : {}", productId);
-        ProductEntity productEntity = productRepository.getById(productId);
-        LOGGER.info("[getProduct] product 정보 요청 완료. productId : {}", productEntity.getProductId());
-        return productEntity;
+        Product product = productRepository.getById(productId);
+        LOGGER.info("[getProduct] product 정보 요청 완료. productId : {}", product.getId());
+        return product;
     }
 
     /**

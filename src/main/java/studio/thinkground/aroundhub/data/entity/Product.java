@@ -1,6 +1,5 @@
 package studio.thinkground.aroundhub.data.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,16 +19,16 @@ import studio.thinkground.aroundhub.data.dto.ProductDto;
 @Builder
 @ToString
 @Table(name = "product")
-public class ProductEntity {
+public class Product {
 
   @Id
-  String productId;
+  String id;
 
-  String productName;
+  String name;
 
-  Integer productPrice;
+  Integer price;
 
-  Integer productStock;
+  Integer stock;
 
   /*
   @Column
@@ -41,10 +40,10 @@ public class ProductEntity {
 
   public ProductDto toDto(){
     return ProductDto.builder()
-        .productId(productId)
-        .productName(productName)
-        .productPrice(productPrice)
-        .productStock(productStock)
+        .productId(id)
+        .productName(name)
+        .productPrice(price)
+        .productStock(stock)
         .build();
   }
 

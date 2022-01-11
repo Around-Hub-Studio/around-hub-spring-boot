@@ -1,11 +1,11 @@
 package studio.thinkground.aroundhub.data.handler;
 
-import studio.thinkground.aroundhub.data.entity.ProductEntity;
+import studio.thinkground.aroundhub.data.entity.Product;
 
 public interface ProductDataHandler {
 
-  ProductEntity saveProductEntity(String productId, String productName, int productPrice, int productStock);
+  Product saveProductEntity(String productId, String productName, int productPrice, int productStock);
 
-  ProductEntity getProductEntity(String productId);
+  Product getProductEntity(String productId);
 
 }

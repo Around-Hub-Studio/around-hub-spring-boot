@@ -11,12 +11,8 @@
 
 ### Contents
 
-<p>각 프로젝트 모듈은 단독으로 구성되어 있어 순서에 구애받지 않고 보셔도 되지만, 단계별로 보시기 편하게 프로젝트를 보실 순서만 제공하고 있습니다.</p>
-<p>1. basic_jpa</p>
-<p>2. entity_manager_factory</p>
-<p>3. simple_example</p>
-<p>4. get_reference_example</p>
-<p>5. id_generation</p>
+<p>스프링 부트 강의 영상에 맞춰 매번 코드가 변경될 수 있습니다.</p>
+<p>최대한 변경된 내용을 커밋 코멘트에 남기지만 넓은 범위로 변경될 경우 일치하지 않을 수 있습니다.</p>
 
 <br>
 

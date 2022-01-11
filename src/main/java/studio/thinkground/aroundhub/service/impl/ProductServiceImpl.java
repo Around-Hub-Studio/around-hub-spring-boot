@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studio.thinkground.aroundhub.data.dto.ProductDto;
-import studio.thinkground.aroundhub.data.entity.ProductEntity;
+import studio.thinkground.aroundhub.data.entity.Product;
 import studio.thinkground.aroundhub.data.handler.ProductDataHandler;
 import studio.thinkground.aroundhub.service.ProductService;
 
@@ -26,14 +26,14 @@ public class ProductServiceImpl implements ProductService {
         int productStock) {
 
         LOGGER.info("[saveProduct] productDataHandler 로 상품 정보 저장 요청");
-        ProductEntity productEntity = productDataHandler.saveProductEntity(productId, productName,
+        Product product = productDataHandler.saveProductEntity(productId, productName,
             productPrice, productStock);
 
         LOGGER.info("[saveProduct] Entity 객체를 DTO 객체로 변환 작업. productId : {}",
-            productEntity.getProductId());
-        ProductDto productDto = new ProductDto(productEntity.getProductId(),
-            productEntity.getProductName(), productEntity.getProductPrice(),
-            productEntity.getProductStock());
+            product.getId());
+        ProductDto productDto = new ProductDto(product.getId(),
+            product.getName(), product.getPrice(),
+            product.getStock());
 
         return productDto;
     }
@@ -42,13 +42,13 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto getProduct(String productId) {
 
         LOGGER.info("[getProduct] productDataHandler 로 상품 정보 조회 요청");
-        ProductEntity productEntity = productDataHandler.getProductEntity(productId);
+        Product product = productDataHandler.getProductEntity(productId);
 
         LOGGER.info("[getProduct] Entity 객체를 DTO 객체로 변환 작업. productId : {}",
-            productEntity.getProductId());
-        ProductDto productDto = new ProductDto(productEntity.getProductId(),
-            productEntity.getProductName(), productEntity.getProductPrice(),
-            productEntity.getProductStock());
+            product.getId());
+        ProductDto productDto = new ProductDto(product.getId(),
+            product.getName(), product.getPrice(),
+            product.getStock());
 
         return productDto;
     }

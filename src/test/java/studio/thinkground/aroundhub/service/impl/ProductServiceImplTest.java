@@ -11,7 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import studio.thinkground.aroundhub.data.dto.ProductDto;
-import studio.thinkground.aroundhub.data.entity.ProductEntity;
+import studio.thinkground.aroundhub.data.entity.Product;
 import studio.thinkground.aroundhub.data.handler.impl.ProductDataHandlerImpl;
 
 //@SpringBootTest(classes = {ProductDataHandlerImpl.class, ProductServiceImpl.class})
@@ -29,7 +29,7 @@ public class ProductServiceImplTest {
   public void getProductTest() {
     //given
     Mockito.when(productDataHandler.getProductEntity("123"))
-        .thenReturn(new ProductEntity("123", "pen", 2000, 3000));
+        .thenReturn(new Product("123", "pen", 2000, 3000));
 
     ProductDto productDto = productService.getProduct("123");
 
@@ -45,7 +45,7 @@ public class ProductServiceImplTest {
   public void saveProductTest() {
     //given
     Mockito.when(productDataHandler.saveProductEntity("123", "pen", 2000, 3000))
-        .thenReturn(new ProductEntity("123", "pen", 2000, 3000));
+        .thenReturn(new Product("123", "pen", 2000, 3000));
 
     ProductDto productDto = productService.saveProduct("123", "pen", 2000, 3000);
 

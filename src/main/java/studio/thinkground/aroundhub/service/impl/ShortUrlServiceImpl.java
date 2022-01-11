@@ -16,7 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import studio.thinkground.aroundhub.data.dao.ShortUrlDAO;
 import studio.thinkground.aroundhub.data.dto.NaverUriDto;
 import studio.thinkground.aroundhub.data.dto.ShortUrlResponseDto;
-import studio.thinkground.aroundhub.data.entity.ShortUrlEntity;
+import studio.thinkground.aroundhub.data.entity.ShortUrl;
 import studio.thinkground.aroundhub.service.ShortUrlService;
 
 @Service
@@ -36,12 +36,12 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         String originalUrl) {
 
         LOGGER.info("[getShortUrl] request data : {}", originalUrl);
-        ShortUrlEntity getShortUrlEntity = shortUrlDAO.getShortUrl(originalUrl);
+        ShortUrl getShortUrl = shortUrlDAO.getShortUrl(originalUrl);
 
         String orgUrl;
         String shortUrl;
 
-        if (getShortUrlEntity == null) {
+        if (getShortUrl == null) {
             LOGGER.info("[getShortUrl] No Entity in Database.");
             ResponseEntity<NaverUriDto> responseEntity = requestShortUrl(clientId, clientSecret,
                 originalUrl);
@@ -50,8 +50,8 @@ public class ShortUrlServiceImpl implements ShortUrlService {
             shortUrl = responseEntity.getBody().getResult().getUrl();
 
         } else {
-            orgUrl = getShortUrlEntity.getOrgUrl();
-            shortUrl = getShortUrlEntity.getUrl();
+            orgUrl = getShortUrl.getOrgUrl();
+            shortUrl = getShortUrl.getUrl();
         }
 
         ShortUrlResponseDto shortUrlResponseDto = new ShortUrlResponseDto(orgUrl, shortUrl);
@@ -77,7 +77,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         String shortUrl = responseEntity.getBody().getResult().getUrl();
         String hash = responseEntity.getBody().getResult().getHash();
 
-        ShortUrlEntity shortUrlEntity = new ShortUrlEntity();
+        ShortUrl shortUrlEntity = new ShortUrl();
         shortUrlEntity.setOrgUrl(orgUrl);
         shortUrlEntity.setUrl(shortUrl);
         shortUrlEntity.setHash(hash);
