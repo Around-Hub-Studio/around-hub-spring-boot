@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/spring_batch
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: djfkdnsemgjqm
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  batch:
+    jdbc:
+      initialize-schema: never
