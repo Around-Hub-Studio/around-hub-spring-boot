@@ -48,12 +48,12 @@ public class ShortUrlController {
         return shortUrlService.getShortUrl(CLIENT_ID, CLIENT_SECRET, originalUrl);
     }
 
-    @PutMapping("/")
+    @PutMapping("")
     public ShortUrlResponseDto updateShortUrl(String originalUrl) {
         return null;
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("")
     public ShortUrlResponseDto deleteShortUrl(String url) {
         return null;
     }
