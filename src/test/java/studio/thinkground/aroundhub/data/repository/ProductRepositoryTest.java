@@ -198,17 +198,17 @@ class ProductRepositoryTest {
         System.out.println("====↑↑ Test Data ↑↑====");
 
         List<Product> foundProducts = productRepository.findByNameContainingOrderByStockAsc("상품");
-        for(Product product : foundProducts){
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
 
         foundProducts = productRepository.findByNameContainingOrderByStockDesc("상품");
-        for(Product product : foundProducts){
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
 
         foundProducts = productRepository.findByNameContainingOrderByPriceAscStockDesc("상품");
-        for(Product product : foundProducts){
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
     }
@@ -222,8 +222,9 @@ class ProductRepositoryTest {
         }
         System.out.println("====↑↑ Test Data ↑↑====");
 
-        List<Product> foundProducts = productRepository.findByNameContainingOrderByPriceAscStockDesc("상품");
-        for(Product product : foundProducts){
+        List<Product> foundProducts = productRepository.findByNameContainingOrderByPriceAscStockDesc(
+            "상품");
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
     }
@@ -237,13 +238,15 @@ class ProductRepositoryTest {
         }
         System.out.println("====↑↑ Test Data ↑↑====");
 
-        List<Product> foundProducts = productRepository.findByNameContaining("상품", Sort.by(Order.asc("price")));
-        for(Product product : foundProducts){
+        List<Product> foundProducts = productRepository.findByNameContaining("상품",
+            Sort.by(Order.asc("price")));
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
 
-        foundProducts = productRepository.findByNameContaining("상품", Sort.by(Order.asc("price"), Order.asc("stock")));
-        for(Product product : foundProducts){
+        foundProducts = productRepository.findByNameContaining("상품",
+            Sort.by(Order.asc("price"), Order.asc("stock")));
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
     }
@@ -257,13 +260,105 @@ class ProductRepositoryTest {
         }
         System.out.println("====↑↑ Test Data ↑↑====");
 
-        List<Product> foundProducts = productRepository.findByPriceGreaterThan(200, PageRequest.of(0, 2));
-        for(Product product : foundProducts){
+        List<Product> foundProducts = productRepository.findByPriceGreaterThan(200,
+            PageRequest.of(0, 2));
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
 
         foundProducts = productRepository.findByPriceGreaterThan(200, PageRequest.of(2, 2));
-        for(Product product : foundProducts){
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void queryTest() {
+        List<Product> foundAll = productRepository.findAll();
+        System.out.println("====↓↓ Test Data ↓↓====");
+        for (Product product : foundAll) {
+            System.out.println(product.toString());
+        }
+        System.out.println("====↑↑ Test Data ↑↑====");
+
+        List<Product> foundProducts = productRepository.findByPriceBasis();
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void nativeQueryTest() {
+        List<Product> foundAll = productRepository.findAll();
+        System.out.println("====↓↓ Test Data ↓↓====");
+        for (Product product : foundAll) {
+            System.out.println(product.toString());
+        }
+        System.out.println("====↑↑ Test Data ↑↑====");
+
+        List<Product> foundProducts = productRepository.findByPriceBasisNativeQuery();
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void parameterQueryTest() {
+        List<Product> foundAll = productRepository.findAll();
+        System.out.println("====↓↓ Test Data ↓↓====");
+        for (Product product : foundAll) {
+            System.out.println(product.toString());
+        }
+        System.out.println("====↑↑ Test Data ↑↑====");
+
+        List<Product> foundProducts = productRepository.findByPriceWithParameter(2000);
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void parameterNamingQueryTest() {
+        List<Product> foundAll = productRepository.findAll();
+        System.out.println("====↓↓ Test Data ↓↓====");
+        for (Product product : foundAll) {
+            System.out.println(product.toString());
+        }
+        System.out.println("====↑↑ Test Data ↑↑====");
+
+        List<Product> foundProducts = productRepository.findByPriceWithParameterNaming(2000);
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void parameterNamingQueryTest2() {
+        List<Product> foundAll = productRepository.findAll();
+        System.out.println("====↓↓ Test Data ↓↓====");
+        for (Product product : foundAll) {
+            System.out.println(product.toString());
+        }
+        System.out.println("====↑↑ Test Data ↑↑====");
+
+        List<Product> foundProducts = productRepository.findByPriceWithParameterNaming2(2000);
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+    }
+
+    @Test
+    public void nativeQueryPagingTest() {
+        List<Product> foundAll = productRepository.findAll();
+        System.out.println("====↓↓ Test Data ↓↓====");
+        for (Product product : foundAll) {
+            System.out.println(product.toString());
+        }
+        System.out.println("====↑↑ Test Data ↑↑====");
+
+        List<Product> foundProducts = productRepository.findByPriceWithParameterPaging(2000,
+            PageRequest.of(2, 2));
+        for (Product product : foundProducts) {
             System.out.println(product);
         }
     }
