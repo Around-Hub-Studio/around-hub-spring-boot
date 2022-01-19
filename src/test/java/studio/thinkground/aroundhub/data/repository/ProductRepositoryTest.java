@@ -206,11 +206,6 @@ class ProductRepositoryTest {
         for (Product product : foundProducts) {
             System.out.println(product);
         }
-
-        foundProducts = productRepository.findByNameContainingOrderByPriceAscStockDesc("상품");
-        for (Product product : foundProducts) {
-            System.out.println(product);
-        }
     }
 
     @Test
@@ -238,8 +233,8 @@ class ProductRepositoryTest {
         }
         System.out.println("====↑↑ Test Data ↑↑====");
 
-        List<Product> foundProducts = productRepository.findByNameContaining("상품",
-            Sort.by(Order.asc("price")));
+        List<Product> foundProducts = productRepository.findByNameContaining(
+            "상품", Sort.by(Order.asc("price")));
         for (Product product : foundProducts) {
             System.out.println(product);
         }
@@ -266,7 +261,7 @@ class ProductRepositoryTest {
             System.out.println(product);
         }
 
-        foundProducts = productRepository.findByPriceGreaterThan(200, PageRequest.of(2, 2));
+        foundProducts = productRepository.findByPriceGreaterThan(200, PageRequest.of(4, 2));
         for (Product product : foundProducts) {
             System.out.println(product);
         }
