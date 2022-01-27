@@ -15,7 +15,7 @@
     </encoder>
   </appender>
 
-
+<!--
   <appender name="DEBUG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>DEBUG</level>
@@ -45,6 +45,7 @@
       <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] %logger %msg%n</pattern>
     </encoder>
   </appender>
+-->
 
   <!--
   <appender name="WARN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
