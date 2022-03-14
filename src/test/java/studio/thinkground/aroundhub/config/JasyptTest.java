@@ -9,8 +9,8 @@ public class JasyptTest {
 
     @Test
     void encryptTest(){
-        String id = "root";
-        String password = "djfkdnsemgjqm";
+        String id = "ddd";
+        String password = "ddd";
 
         System.out.println(jasyptEncoding(id));
         System.out.println(jasyptEncoding(password));

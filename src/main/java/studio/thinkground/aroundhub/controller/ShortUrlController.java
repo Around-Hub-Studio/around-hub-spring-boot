@@ -16,7 +16,7 @@ import studio.thinkground.aroundhub.data.dto.ShortUrlResponseDto;
 import studio.thinkground.aroundhub.service.ShortUrlService;
 
 @RestController
-@RequestMapping("/short-url")
+@RequestMapping("/api/v1/short-url")
 public class ShortUrlController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ShortUrlController.class);
