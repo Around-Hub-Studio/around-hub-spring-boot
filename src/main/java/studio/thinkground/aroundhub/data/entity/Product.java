@@ -19,7 +19,7 @@ import studio.thinkground.aroundhub.data.dto.ProductDto;
 @Builder
 @ToString
 @Table(name = "product")
-public class Product {
+public class Product extends BaseEntity{
 
   @Id
   String id;
