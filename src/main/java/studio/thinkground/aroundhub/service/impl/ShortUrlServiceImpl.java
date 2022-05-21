@@ -39,10 +39,10 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         // Cache Logic
         Optional<ShortUrlResponseDto> foundResponseDto = shortUrlRedisRepository.findById(originalUrl);
         if (foundResponseDto.isPresent()) {
-            LOGGER.info("[getShortUrl] Cache Data is existed.");
+            LOGGER.info("[getShortUrl] Cache Data existed.");
             return foundResponseDto.get();
         } else {
-            LOGGER.info("[getShortUrl] Cache Data is not existed.");
+            LOGGER.info("[getShortUrl] Cache Data does not existed.");
         }
 
         ShortUrl getShortUrl = shortUrlDAO.getShortUrl(originalUrl);
