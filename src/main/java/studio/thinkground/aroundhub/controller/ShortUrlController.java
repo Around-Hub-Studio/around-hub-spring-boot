@@ -36,18 +36,20 @@ public class ShortUrlController {
 
     @PostMapping()
     public ShortUrlResponseDto generateShortUrl(String originalUrl) {
-
         LOGGER.info("[generateShortUrl] perform API. CLIENT_ID : {}, CLIENT_SECRET : {}", CLIENT_ID, CLIENT_SECRET);
 
         return shortUrlService.generateShortUrl(CLIENT_ID, CLIENT_SECRET, originalUrl);
-
     }
 
     @GetMapping()
     public ShortUrlResponseDto getShortUrl(String originalUrl) {
-        //ShortUrlResponseDto shortUrlResponseDto = new ShortUrlResponseDto("ss", "ss");
+        long startTime = System.currentTimeMillis();
+        ShortUrlResponseDto shortUrlResponseDto = shortUrlService.getShortUrl(CLIENT_ID, CLIENT_SECRET, originalUrl);
+        long endTime = System.currentTimeMillis();
 
-        return shortUrlService.getShortUrl(CLIENT_ID, CLIENT_SECRET, originalUrl);
+        LOGGER.info("[getShortUrl] response Time : {}ms", (endTime - startTime));
+
+        return shortUrlResponseDto;
     }
 
     @PutMapping("/")
@@ -57,9 +59,9 @@ public class ShortUrlController {
 
     @DeleteMapping("/")
     public ResponseEntity<String> deleteShortUrl(String url) {
-        try{
+        try {
             shortUrlService.deleteShortUrl(url);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
 

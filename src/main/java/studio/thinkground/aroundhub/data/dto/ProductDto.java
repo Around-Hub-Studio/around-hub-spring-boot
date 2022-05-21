@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 import studio.thinkground.aroundhub.data.entity.Product;
 
 @Data
@@ -15,6 +17,7 @@ import studio.thinkground.aroundhub.data.entity.Product;
 @AllArgsConstructor
 @ToString
 @Builder
+@RedisHash(value = "product", timeToLive = 60)
 public class ProductDto {
 
   //@Size(min = 8, max = 8) // abcdefg
@@ -22,6 +25,7 @@ public class ProductDto {
   private String productId;
 
   @NotNull
+  @Id
   private String productName;
 
   @NotNull

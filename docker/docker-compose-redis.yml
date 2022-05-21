@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  aroundhub_redis:
+    image: redis:7.0.0
+    restart: always
+    ports:
+      - "6379:6379"
