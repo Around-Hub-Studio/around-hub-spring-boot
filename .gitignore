@@ -18,7 +18,11 @@ target/
 *.iws
 *.iml
 *.ipr
+
+### docker ###
 !**/docker/
+**/docker/master_db
+**/docker/slave_db
 
 ### NetBeans ###
 /nbproject/private/
