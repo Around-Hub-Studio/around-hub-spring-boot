@@ -13,8 +13,17 @@
 
 <p>스프링 부트 강의 영상에 맞춰 매번 코드가 변경될 수 있습니다.</p>
 <p>최대한 변경된 내용을 커밋 코멘트에 남기지만 넓은 범위로 변경될 경우 일치하지 않을 수 있습니다.</p>
-
 <br>
+
+#### Docker 사용법  
+<p>1. ./docker 경로에 있는 docker-compose-*.yml 파일을 관리에 용이한 디렉토리에 복사합니다.</p>
+<p>2. 아래와 같이 실행합니다.</p>
+<pre>
+<code>
+## 파일마다 아래와 같은 커맨드로 실행합니다.
+docker-compose -f {파일명}.yml up -d
+</code>
+</pre>
 
 ### Around Hub Studio & ThinkGround
 
