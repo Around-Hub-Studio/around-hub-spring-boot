@@ -32,3 +32,5 @@ services:
       - "3307:3306"
     depends_on:
       - db_master # depends_on은 실행 순서에 대한 정의입니다. 다만 서비스가 온전히 실행됐는지 검증하진 않아 별도 처리가 필요할 수 있습니다.
+
+# docker-compose -f docker-compose-mariadb.yml up -d
