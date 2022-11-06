@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class LocalConfiguration implements EnvConfiguration {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(DevConfiguration.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(LocalConfiguration.class);
     @Value("${around.hub.loading.message}")
     private String message;
 

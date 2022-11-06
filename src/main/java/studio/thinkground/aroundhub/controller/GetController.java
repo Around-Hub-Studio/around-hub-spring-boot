@@ -16,7 +16,7 @@ public class GetController {
     // http://localhost:8080/api/v1/get-api/hello
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String getHello() {
-        return "Hello World";
+        return "Hello Around Hub Studio!";
     }
 
     // http://localhost:8080/api/v1/get-api/name

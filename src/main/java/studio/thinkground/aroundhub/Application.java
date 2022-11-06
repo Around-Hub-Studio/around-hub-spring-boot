@@ -9,18 +9,18 @@ import studio.thinkground.aroundhub.config.ProfileManager;
 import studio.thinkground.aroundhub.config.env.EnvConfiguration;
 
 @SpringBootApplication
-public class AroundHubSpringBootApplication {
+public class Application {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(AroundHubSpringBootApplication.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
     @Autowired
-    public AroundHubSpringBootApplication(EnvConfiguration envConfiguration, ProfileManager profileManager) {
+    public Application(EnvConfiguration envConfiguration, ProfileManager profileManager) {
         LOGGER.info(envConfiguration.getMessage());
         profileManager.printActiveProfiles();
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(AroundHubSpringBootApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
