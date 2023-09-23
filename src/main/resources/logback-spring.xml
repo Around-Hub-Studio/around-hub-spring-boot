@@ -5,13 +5,18 @@
   <property name="logback" value="logback"/><!-- log를 저장할 최종 디렉토리명 -->
   <property name="logdir" value="D:\Workspace\LogFiles"/>
 
+  <!-- Colors -->
+  <!-- %black", "%red", "%green", "%yellow", "%blue", "%magenta",
+  "%cyan", "%white", "%gray", "%boldRed", "%boldGreen", "%boldYellow",
+  "%boldBlue", "%boldMagenta", "%boldCyan", "%boldWhite" and "%highlight" -->
+
   <!-- Appenders -->
   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>DEBUG</level>
     </filter>
     <encoder>
-      <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] %logger{30} %msg%n</pattern>
+      <pattern>%green([%d{yyyy-MM-dd HH:mm:ss.SSS}]) %magenta([%-5level]) %highlight([%thread]) %cyan(%logger{30}) %yellow(%msg%n)</pattern>
     </encoder>
   </appender>
 
