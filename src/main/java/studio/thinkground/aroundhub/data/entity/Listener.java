@@ -1,9 +1,10 @@
 package studio.thinkground.aroundhub.data.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 import studio.thinkground.aroundhub.data.entity.listener.CustomListener;
 
-import javax.persistence.*;
+
 
 @Entity
 @Getter

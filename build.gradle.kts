@@ -1,6 +1,6 @@
 plugins {
     java
-    id("org.springframework.boot") version "2.7.5"
+    id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.0"
     id("io.freefair.lombok") version "6.6.1"
 }
@@ -24,8 +24,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
-    implementation("io.springfox:springfox-swagger-ui:3.0.0")
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.4.0")
 
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")

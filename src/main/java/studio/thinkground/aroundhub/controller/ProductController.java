@@ -1,8 +1,11 @@
 package studio.thinkground.aroundhub.controller;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import javax.validation.Valid;
+
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +53,8 @@ public class ProductController {
     }
 
     // http://localhost:8080/api/v1/product-api/product
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
+    @Parameters({
+        @Parameter(name = "X-AUTH-TOKEN", description = "로그인 성공 후 access_token", required = true, schema = @Schema(implementation = String.class), in = ParameterIn.HEADER)
     })
     @PostMapping(value = "/product")
     public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto) {
@@ -80,8 +83,8 @@ public class ProductController {
     }
 
     // http://localhost:8080/api/v1/product-api/product/{productId}
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
+    @Parameters({
+            @Parameter(name = "X-AUTH-TOKEN", description = "로그인 성공 후 access_token", required = true, schema = @Schema(implementation = String.class), in = ParameterIn.HEADER)
     })
     @DeleteMapping(value = "/product/{productId}")
     public ProductDto deleteProduct(@PathVariable String productId) {

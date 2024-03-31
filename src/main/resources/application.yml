@@ -21,9 +21,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  redis:
-    host: localhost
-    port: 6379
+  data:
+    redis:
+      host: localhost
+      port: 6379
 jasypt: # 프로퍼티 암호화 설정
   encryptor:
     bean: jasyptStringEncryptor

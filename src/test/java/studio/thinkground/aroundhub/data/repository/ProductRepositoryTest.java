@@ -1,7 +1,8 @@
 package studio.thinkground.aroundhub.data.repository;
 
 import java.util.List;
-import javax.transaction.Transactional;
+
+import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
