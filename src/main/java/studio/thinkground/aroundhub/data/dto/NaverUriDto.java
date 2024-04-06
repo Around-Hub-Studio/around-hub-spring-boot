@@ -15,22 +15,20 @@ import lombok.ToString;
 @Builder
 public class NaverUriDto {
 
-    private String message;
+  private String message;
 
-    private String code;
+  private String code;
 
-    private Result result;
+  private Result result;
 
-    @Getter
-    @Setter
-    public static class Result {
+  @Getter
+  @Setter
+  public static class Result {
 
-        private String hash;
+    private String hash;
 
-        private String url;
+    private String url;
 
-        private String orgUrl;
-
-    }
-
+    private String orgUrl;
+  }
 }

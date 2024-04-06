@@ -1,10 +1,10 @@
 package studio.thinkground.aroundhub.data.entity;
 
 import jakarta.persistence.*;
+
 import lombok.*;
+
 import studio.thinkground.aroundhub.data.entity.listener.CustomListener;
-
-
 
 @Entity
 @Getter
@@ -16,10 +16,9 @@ import studio.thinkground.aroundhub.data.entity.listener.CustomListener;
 @EntityListeners(CustomListener.class)
 public class Listener {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String name;
-
+  private String name;
 }

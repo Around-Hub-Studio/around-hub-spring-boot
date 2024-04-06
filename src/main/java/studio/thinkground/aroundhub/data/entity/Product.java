@@ -1,15 +1,16 @@
 package studio.thinkground.aroundhub.data.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 import studio.thinkground.aroundhub.data.dto.ProductDto;
 
 @Entity
@@ -20,10 +21,9 @@ import studio.thinkground.aroundhub.data.dto.ProductDto;
 @Builder
 @ToString
 @Table(name = "product")
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
 
-  @Id
-  String id;
+  @Id String id;
 
   String name;
 
@@ -39,7 +39,7 @@ public class Product extends BaseEntity{
   String sellerPhoneNumber;
    */
 
-  public ProductDto toDto(){
+  public ProductDto toDto() {
     return ProductDto.builder()
         .productId(id)
         .productName(name)
@@ -47,5 +47,4 @@ public class Product extends BaseEntity{
         .productStock(stock)
         .build();
   }
-
 }

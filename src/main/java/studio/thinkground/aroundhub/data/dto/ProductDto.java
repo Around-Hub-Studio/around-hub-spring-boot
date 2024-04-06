@@ -1,16 +1,18 @@
 package studio.thinkground.aroundhub.data.dto;
 
-
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+
 import studio.thinkground.aroundhub.data.entity.Product;
 
 @Data
@@ -21,13 +23,10 @@ import studio.thinkground.aroundhub.data.entity.Product;
 @RedisHash(value = "product", timeToLive = 60)
 public class ProductDto {
 
-  //@Size(min = 8, max = 8) // abcdefg
-  @NotNull
-  private String productId;
+  // @Size(min = 8, max = 8) // abcdefg
+  @NotNull private String productId;
 
-  @NotNull
-  @Id
-  private String productName;
+  @NotNull @Id private String productName;
 
   @NotNull
   @Min(value = 500)
@@ -39,7 +38,7 @@ public class ProductDto {
   @Max(value = 9999)
   private int productStock;
 
-  public Product toEntity(){
+  public Product toEntity() {
     return Product.builder()
         .id(productId)
         .name(productName)
@@ -47,5 +46,4 @@ public class ProductDto {
         .stock(productStock)
         .build();
   }
-
 }

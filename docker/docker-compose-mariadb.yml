@@ -1,4 +1,4 @@
-version: "3.3"
+version: '3.3'
 
 services:
   db_master:
@@ -14,7 +14,7 @@ services:
       - ./master_db/data:/var/lib/mysql # 각종 log와 index등이 volume이 저장되는 디렉토리
       - ./master_db/config/:/etc/mysql/conf.d # 이전에 나왔던 ./master/config/my.cnf 를 써줌으써 설정을 reference해줍니다.
     ports:
-      - "3306:3306" # 이 옵션은 docker engine에게 각 container에게 포트를 수동으로 설정하게 해줍니다.
+      - '3306:3306' # 이 옵션은 docker engine에게 각 container에게 포트를 수동으로 설정하게 해줍니다.
 
   db_slave:
     image: mariadb:10.6 # mariadb 10.6 버전 이미지 사용
@@ -29,7 +29,7 @@ services:
       - ./slave_db/data:/var/lib/mysql
       - ./slave_db/config/:/etc/mysql/conf.d
     ports:
-      - "3307:3306"
+      - '3307:3306'
     depends_on:
       - db_master # depends_on은 실행 순서에 대한 정의입니다. 다만 서비스가 온전히 실행됐는지 검증하진 않아 별도 처리가 필요할 수 있습니다.
 

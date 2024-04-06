@@ -2,8 +2,8 @@ package studio.thinkground.aroundhub.common.valid;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import studio.thinkground.aroundhub.common.annotation.ValidationAnnotation;
 
+import studio.thinkground.aroundhub.common.annotation.ValidationAnnotation;
 
 public class ParameterValidator implements ConstraintValidator<ValidationAnnotation, String> {
   @Override

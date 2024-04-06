@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface MethodAnnotation {
   String name();
+
   String value() default "I'm Method";
 }

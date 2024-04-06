@@ -1,33 +1,33 @@
 package studio.thinkground.aroundhub.service.impl;
 
-import static org.mockito.Mockito.verify;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.mockito.Mockito.verify;
+
 import studio.thinkground.aroundhub.data.dto.ProductDto;
 import studio.thinkground.aroundhub.data.entity.Product;
 import studio.thinkground.aroundhub.data.handler.impl.ProductDataHandlerImpl;
 
-//@SpringBootTest(classes = {ProductDataHandlerImpl.class, ProductServiceImpl.class})
+// @SpringBootTest(classes = {ProductDataHandlerImpl.class, ProductServiceImpl.class})
 @ExtendWith(SpringExtension.class)
 @Import({ProductDataHandlerImpl.class, ProductServiceImpl.class})
 public class ProductServiceImplTest {
 
-  @MockBean
-  ProductDataHandlerImpl productDataHandler;
+  @MockBean ProductDataHandlerImpl productDataHandler;
 
-  @Autowired
-  ProductServiceImpl productService;
+  @Autowired ProductServiceImpl productService;
 
   @Test
   public void getProductTest() {
-    //given
+    // given
     Mockito.when(productDataHandler.getProductEntity("123"))
         .thenReturn(new Product("123", "pen", 2000, 3000));
 
@@ -43,7 +43,7 @@ public class ProductServiceImplTest {
 
   @Test
   public void saveProductTest() {
-    //given
+    // given
     Mockito.when(productDataHandler.saveProductEntity("123", "pen", 2000, 3000))
         .thenReturn(new Product("123", "pen", 2000, 3000));
 
@@ -56,6 +56,4 @@ public class ProductServiceImplTest {
 
     verify(productDataHandler).saveProductEntity("123", "pen", 2000, 3000);
   }
-
-
 }

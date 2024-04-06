@@ -4,16 +4,15 @@ import studio.thinkground.aroundhub.data.entity.ShortUrl;
 
 public interface ShortUrlDAO {
 
-    ShortUrl saveShortUrl(ShortUrl shortUrl);
+  ShortUrl saveShortUrl(ShortUrl shortUrl);
 
-    ShortUrl getShortUrl(String originalUrl);
+  ShortUrl getShortUrl(String originalUrl);
 
-    ShortUrl getOriginalUrl(String shortUrl);
+  ShortUrl getOriginalUrl(String shortUrl);
 
-    ShortUrl updateShortUrl(ShortUrl newShortUrl);
+  ShortUrl updateShortUrl(ShortUrl newShortUrl);
 
-    void deleteByShortUrl(String shortUrl);
+  void deleteByShortUrl(String shortUrl);
 
-    void deleteByOriginalUrl(String originalUrl);
-
+  void deleteByOriginalUrl(String originalUrl);
 }

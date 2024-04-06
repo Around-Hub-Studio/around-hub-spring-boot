@@ -3,6 +3,7 @@ plugins {
     id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.0"
     id("io.freefair.lombok") version "6.6.1"
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 group = "studio.thinkground"
@@ -10,6 +11,31 @@ version = "1.0.0"
 description = "AroundHub_SpringBoot"
 
 java.sourceCompatibility = JavaVersion.VERSION_17
+
+spotless {
+    format("yaml") {
+        target("**.*.yaml", "**/*.yml")
+        prettier().configFile(".prettierrc")
+    }
+    java {
+        removeUnusedImports()
+        googleJavaFormat()
+        importOrder(
+                "java",
+                "jakarta",
+                "lombok",
+                "org.springframework",
+                "",
+                "\\#",
+                "studio.thinkground",
+                "\\#studio.thinkground"
+        )
+        indentWithTabs(2)
+        indentWithSpaces(2)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
 
 repositories {
     mavenLocal()
