@@ -16,7 +16,7 @@ spring:
   # validate : update처럼 Object를 검사하지만, 스키마는 아무것도 건드리지 않고, Object와 스키마의 정보가 다르다면 에러를 발생시킨다.
   # none : 사용하지 않음
   jpa:
-    hibernate.ddl-auto: none
+    hibernate.ddl-auto: create
     show-sql: true
     properties:
       hibernate:
@@ -34,8 +34,6 @@ around:
       url:
         id: ENC(ZJtn8I8tSMNBtlUhuF9l4gPmSt5cEbvEaTDREJq31PQ=)
         secret: ENC(tWXd8DA35z/XD28NuFNrvNRY4xJTU+v0)
-    loading:
-      message: '## local 환경으로 실행되었습니다 ##'
     ## ConditionalOnProperty Sample
     portal: naver
 
@@ -44,27 +42,18 @@ spring:
   config:
     activate:
       on-profile: local
-around:
-  hub:
-    loading:
-      message: '## local 환경으로 실행되었습니다 ##'
-
 ---
 spring:
   config:
     activate:
       on-profile: dev
-around:
-  hub:
-    loading:
-      message: '## dev 환경으로 실행되었습니다 ##'
-
 ---
 spring:
   config:
     activate:
       on-profile: prod
-around:
-  hub:
-    loading:
-      message: '## prod 환경으로 실행되었습니다 ##'
+---
+spring:
+  config:
+    activate:
+      on-profile: test

@@ -67,5 +67,5 @@ tasks.withType<JavaCompile>() {
 
 tasks.test {
     useJUnitPlatform()
-    //systemProperties["spring.profiles.active"] = "test"
+    systemProperties["spring.profiles.active"] = "test"
 }

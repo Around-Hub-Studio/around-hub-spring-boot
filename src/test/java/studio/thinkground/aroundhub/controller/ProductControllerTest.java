@@ -19,16 +19,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import studio.thinkground.aroundhub.data.dto.ProductDto;
-import studio.thinkground.aroundhub.service.impl.ProductServiceImpl;
+import studio.thinkground.aroundhub.service.ProductService;
 
 @WebMvcTest(ProductController.class)
-// @AutoConfigureWebMvc // 이 어노테이션을 통해 MockMvc를 Builder 없이 주입받을 수 있음
 public class ProductControllerTest {
 
   @Autowired private MockMvc mockMvc;
-
-  // ProductController에서 잡고 있는 Bean 객체에 대해 Mock 형태의 객체를 생성해줌
-  @MockBean ProductServiceImpl productService;
+  @MockBean ProductService productService;
 
   // http://localhost:8080/api/v1/product-api/product/{productId}
   @Test
