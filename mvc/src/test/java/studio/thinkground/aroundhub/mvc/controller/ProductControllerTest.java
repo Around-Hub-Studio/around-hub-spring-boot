@@ -18,8 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import studio.thinkground.aroundhub.data.dto.ProductDto;
-import studio.thinkground.aroundhub.service.ProductService;
+import studio.thinkground.aroundhub.mvc.data.dto.ProductDto;
+import studio.thinkground.aroundhub.mvc.service.ProductService;
 
 @WebMvcTest(ProductController.class)
 public class ProductControllerTest {

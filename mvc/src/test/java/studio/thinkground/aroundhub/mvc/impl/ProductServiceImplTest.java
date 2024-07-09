@@ -12,9 +12,10 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.verify;
 
-import studio.thinkground.aroundhub.data.dto.ProductDto;
-import studio.thinkground.aroundhub.data.entity.Product;
-import studio.thinkground.aroundhub.data.handler.impl.ProductDataHandlerImpl;
+import studio.thinkground.aroundhub.mvc.data.dto.ProductDto;
+import studio.thinkground.aroundhub.mvc.data.entity.Product;
+import studio.thinkground.aroundhub.mvc.data.handler.impl.ProductDataHandlerImpl;
+import studio.thinkground.aroundhub.mvc.service.impl.ProductServiceImpl;
 
 // @SpringBootTest(classes = {ProductDataHandlerImpl.class, ProductServiceImpl.class})
 @ExtendWith(SpringExtension.class)
