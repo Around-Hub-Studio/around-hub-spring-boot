@@ -1,0 +1,59 @@
+server:
+  port: 8090
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/springboot
+    username: ENC(LdsY1or+HixRvd/oLzeD0Q==)
+    password: ENC(ocjxUpU0Aq6GM0WtxG9zhQEq7RlpTQey)
+  ## JPA 설정
+  # create : SessionFactory가 올라갈 때 테이블을 지우고 새로 만듬. (sql문을 별도로 만들어서 데이터를 넣는 용도로도 사용가능하다.)
+  # create-drop : create와 동일하지만, SessionFactory가 내려가면 해당 테이블을 drop시킨다.
+  # update : SessionFactory가 올라갈 때 Object를 검사하여 테이블을 alter 시킨다. 데이터는 유지됨.
+  # validate : update처럼 Object를 검사하지만, 스키마는 아무것도 건드리지 않고, Object와 스키마의 정보가 다르다면 에러를 발생시킨다.
+  # none : 사용하지 않음
+  jpa:
+    hibernate.ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+jasypt: # 프로퍼티 암호화 설정
+  encryptor:
+    bean: jasyptStringEncryptor
+around:
+  hub:
+    short:
+      url:
+        id: ENC(ZJtn8I8tSMNBtlUhuF9l4gPmSt5cEbvEaTDREJq31PQ=)
+        secret: ENC(tWXd8DA35z/XD28NuFNrvNRY4xJTU+v0)
+    ## ConditionalOnProperty Sample
+    portal: naver
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+---
+spring:
+  config:
+    activate:
+      on-profile: test
