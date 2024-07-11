@@ -1,4 +1,4 @@
-package studio.thinkground.aroundhub.webflux;
+package studio.thinkground.reactive;
 
 public class Main {
   public static void main(String[] args) {
