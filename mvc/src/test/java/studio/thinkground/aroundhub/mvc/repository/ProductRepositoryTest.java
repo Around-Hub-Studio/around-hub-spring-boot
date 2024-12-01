@@ -14,8 +14,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import studio.thinkground.aroundhub.mvc.data.entity.Product;
-import studio.thinkground.aroundhub.mvc.data.repository.ProductRepository;
+import studio.thinkground.aroundhub.mvc.product.Product;
+import studio.thinkground.aroundhub.mvc.product.ProductRepository;
 
 @SpringBootTest
 class ProductRepositoryTest {

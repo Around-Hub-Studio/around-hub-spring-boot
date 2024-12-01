@@ -18,8 +18,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import studio.thinkground.aroundhub.mvc.data.dto.ProductDto;
-import studio.thinkground.aroundhub.mvc.service.ProductService;
+import studio.thinkground.aroundhub.mvc.product.ProductController;
+import studio.thinkground.aroundhub.mvc.product.ProductService;
+import studio.thinkground.aroundhub.mvc.product.dto.ProductRequest;
 
 @WebMvcTest(ProductController.class)
 public class ProductControllerTest {
@@ -34,7 +35,7 @@ public class ProductControllerTest {
 
     // given : Mock 객체가 특정 상황에서 해야하는 행위를 정의하는 메소드
     given(productService.getProduct("12315"))
-        .willReturn(new ProductDto("15871", "pen", 5000, 2000));
+        .willReturn(new ProductRequest("15871", "pen", 5000, 2000));
 
     String productId = "12315";
 
@@ -60,17 +61,17 @@ public class ProductControllerTest {
   void createProductTest() throws Exception {
     // Mock 객체에서 특정 메소드가 실행되는 경우 실제 Return을 줄 수 없기 때문에 아래와 같이 가정 사항을 만들어줌
     given(productService.saveProduct("15871", "pen", 5000, 2000))
-        .willReturn(new ProductDto("15871", "pen", 5000, 2000));
+        .willReturn(new ProductRequest("15871", "pen", 5000, 2000));
 
-    ProductDto productDto =
-        ProductDto.builder()
+    ProductRequest productRequest =
+        ProductRequest.builder()
             .productId("15871")
             .productName("pen")
             .productPrice(5000)
             .productStock(2000)
             .build();
     Gson gson = new Gson();
-    String content = gson.toJson(productDto);
+    String content = gson.toJson(productRequest);
 
     // 아래 코드로 json 형태 변경 작업을 대체할 수 있음
     // String json = new ObjectMapper().writeValueAsString(productDto);

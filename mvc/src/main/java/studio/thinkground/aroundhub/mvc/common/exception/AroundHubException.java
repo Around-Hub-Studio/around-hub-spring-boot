@@ -2,7 +2,7 @@ package studio.thinkground.aroundhub.mvc.common.exception;
 
 import org.springframework.http.HttpStatus;
 
-import studio.thinkground.aroundhub.mvc.common.Constants;
+import studio.thinkground.aroundhub.mvc.common.constant.Constants;
 
 public class AroundHubException extends Exception {
 

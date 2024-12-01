@@ -6,8 +6,8 @@ import org.springframework.test.context.ActiveProfiles;
 
 import org.junit.jupiter.api.Test;
 
-import studio.thinkground.aroundhub.mvc.data.entity.Product;
-import studio.thinkground.aroundhub.mvc.data.repository.ProductRepository;
+import studio.thinkground.aroundhub.mvc.product.Product;
+import studio.thinkground.aroundhub.mvc.product.ProductRepository;
 
 /**
  * PackageName : studio.thinkground.aroundhub.data.repository FileName : DevProductRepositoryTest

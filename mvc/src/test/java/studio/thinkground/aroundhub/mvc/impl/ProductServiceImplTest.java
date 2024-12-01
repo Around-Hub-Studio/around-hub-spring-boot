@@ -12,10 +12,10 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.verify;
 
-import studio.thinkground.aroundhub.mvc.data.dto.ProductDto;
-import studio.thinkground.aroundhub.mvc.data.entity.Product;
-import studio.thinkground.aroundhub.mvc.data.handler.impl.ProductDataHandlerImpl;
-import studio.thinkground.aroundhub.mvc.service.impl.ProductServiceImpl;
+import studio.thinkground.aroundhub.mvc.product.Product;
+import studio.thinkground.aroundhub.mvc.product.ProductDataHandlerImpl;
+import studio.thinkground.aroundhub.mvc.product.ProductServiceImpl;
+import studio.thinkground.aroundhub.mvc.product.dto.ProductRequest;
 
 // @SpringBootTest(classes = {ProductDataHandlerImpl.class, ProductServiceImpl.class})
 @ExtendWith(SpringExtension.class)
@@ -32,12 +32,12 @@ public class ProductServiceImplTest {
     Mockito.when(productDataHandler.getProductEntity("123"))
         .thenReturn(new Product("123", "pen", 2000, 3000));
 
-    ProductDto productDto = productService.getProduct("123");
+    ProductRequest productRequest = productService.getProduct("123");
 
-    Assertions.assertEquals(productDto.getProductId(), "123");
-    Assertions.assertEquals(productDto.getProductName(), "pen");
-    Assertions.assertEquals(productDto.getProductPrice(), 2000);
-    Assertions.assertEquals(productDto.getProductStock(), 3000);
+    Assertions.assertEquals(productRequest.getProductId(), "123");
+    Assertions.assertEquals(productRequest.getProductName(), "pen");
+    Assertions.assertEquals(productRequest.getProductPrice(), 2000);
+    Assertions.assertEquals(productRequest.getProductStock(), 3000);
 
     verify(productDataHandler).getProductEntity("123");
   }
@@ -48,12 +48,12 @@ public class ProductServiceImplTest {
     Mockito.when(productDataHandler.saveProductEntity("123", "pen", 2000, 3000))
         .thenReturn(new Product("123", "pen", 2000, 3000));
 
-    ProductDto productDto = productService.saveProduct("123", "pen", 2000, 3000);
+    ProductRequest productRequest = productService.saveProduct("123", "pen", 2000, 3000);
 
-    Assertions.assertEquals(productDto.getProductId(), "123");
-    Assertions.assertEquals(productDto.getProductName(), "pen");
-    Assertions.assertEquals(productDto.getProductPrice(), 2000);
-    Assertions.assertEquals(productDto.getProductStock(), 3000);
+    Assertions.assertEquals(productRequest.getProductId(), "123");
+    Assertions.assertEquals(productRequest.getProductName(), "pen");
+    Assertions.assertEquals(productRequest.getProductPrice(), 2000);
+    Assertions.assertEquals(productRequest.getProductStock(), 3000);
 
     verify(productDataHandler).saveProductEntity("123", "pen", 2000, 3000);
   }
