@@ -6,6 +6,8 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+import studio.thinkground.reactive.user.User;
+
 @Configuration
 public class BasicRouter {
 
@@ -35,6 +37,13 @@ public class BasicRouter {
                   (requestId == null) ? "No Request Id found" : "Request Id: " + requestId;
               return ServerResponse.ok().bodyValue(response);
             })
+        .POST(
+            "/api/router/create",
+            request ->
+                request
+                    .bodyToMono(User.class)
+                    .flatMap(
+                        user -> ServerResponse.ok().bodyValue("User Created: " + user.getName())))
         .build();
   }
 }
