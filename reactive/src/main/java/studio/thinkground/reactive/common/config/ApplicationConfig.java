@@ -1,4 +1,4 @@
-package studio.thinkground.reactive.config;
+package studio.thinkground.reactive.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.EnableWebFlux;
