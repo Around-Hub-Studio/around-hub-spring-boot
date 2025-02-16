@@ -21,13 +21,6 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/argument")
 public class MethodArgumentExample {
 
-  // ServerWebExchange를 사용하여 User-Agent 헤더 값을 읽고 응답
-  @GetMapping("/user-agent")
-  public Mono<String> getUserAgent(ServerWebExchange exchange) {
-    String userAgent = exchange.getRequest().getHeaders().getFirst("User-Agent");
-    return Mono.just("User-Agent: " + (userAgent != null ? userAgent : "Unknown"));
-  }
-
   // ServerHttpRequest의 getBody()를 사용하여 요청 바디를 읽고 반환
   @PostMapping("/echo")
   public Mono<String> echo(ServerHttpRequest request) {
@@ -53,5 +46,12 @@ public class MethodArgumentExample {
     String json = "{\"message\": \"Hello, WebFlux!\"}";
     return response.writeWith(
         Mono.just(response.bufferFactory().wrap(json.getBytes(StandardCharsets.UTF_8))));
+  }
+
+  // ServerWebExchange를 사용하여 User-Agent 헤더 값을 읽고 응답
+  @GetMapping("/user-agent")
+  public Mono<String> getUserAgent(ServerWebExchange exchange) {
+    String userAgent = exchange.getRequest().getHeaders().getFirst("User-Agent");
+    return Mono.just("User-Agent: " + (userAgent != null ? userAgent : "Unknown"));
   }
 }
