@@ -1,5 +1,5 @@
 ### /user-gent
-GET http://localhost:8080/argument/user-agent
+GET {{base-url}}/argument/user-agent
 
 ### /echo
 POST http://localhost:8080/argument/echo
